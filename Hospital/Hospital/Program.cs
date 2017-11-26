@@ -22,6 +22,8 @@ namespace Hospital
             this.name = n;
         }
     }
+
+    //departments basics
     class department
     {
         string name;
@@ -36,6 +38,8 @@ namespace Hospital
             this.p_num = p;
         }
     }
+
+    //informations about doctors
     class doctor
     {
         string name;
@@ -48,4 +52,16 @@ namespace Hospital
             this.age = a;
         }
     }
+
+    //rooms
+    class room
+    {
+        Boolean full;
+        string p_name;
+        public room(string p)
+        {
+            this.p_name = p;
+        }
+    }
+
 }
