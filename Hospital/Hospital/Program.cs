@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hospital
 {
@@ -10,16 +6,65 @@ namespace Hospital
     {
         static void Main(string[] args)
         {
+            //Welcome Screen
+            Console.WriteLine("**************************************");
+            Console.WriteLine("********* {0} Hospital **********", hospital.h);
+            Console.WriteLine("Welcome To The Hospital\n*******************\nWe Hope You Get Well Soon\n*******************");
+            Console.WriteLine("Please Tell Us Are You\n1) A Doctor\n2) A Patient");
+            Console.WriteLine("*******************");
+            
+        selection1:
+            Console.Write("Enter Your Selection : ");
+            string c1 = Console.ReadLine();
+            Console.WriteLine("*******************");
+            Console.WriteLine("Processing...");
+
+            //Starting the first thing which is going through what we would do as a doctor or a patient
+            if(c1 == "1")
+            {
+                doctor();
+            }
+            else if(c1 == "2")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Wrong Choice, Please Try Again!");
+                Console.WriteLine("*******************");
+                goto selection1;
+
+            }
+        } //Main Function End -in case of being uncertain
+
+        // A Method For Doctors
+        public static void doctor()
+        {
+            Console.WriteLine("*********************************************************");
+            Console.WriteLine("Welcome Doctor, Please Enter Your ID Number Below");
+            Console.WriteLine("*******************");
+        selection2:
+            Console.Write("ID Number : ");
+            string id = Console.ReadLine();
+            Boolean ids = false; //Add the check id function
+            if(ids == false)
+            {
+                Console.WriteLine("*******************\nWrong ID Number, Try Again!\n*******************");
+                goto selection2;
+            }
+
+
         }
     }
 
     //The Hospital Details
     class hospital
     {
-        string name;
+        public string hname;
+        public static string h = "HOPE";
         public hospital(string n)
         {
-            this.name = n;
+            this.hname = n;
         }
     }
 
@@ -58,10 +103,10 @@ namespace Hospital
     {
         Boolean full;
         string p_name;
+
         public room(string p)
         {
             this.p_name = p;
         }
     }
-
 }
