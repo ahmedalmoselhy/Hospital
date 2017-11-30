@@ -36,7 +36,9 @@ namespace Hospital
 
             }
         } //Main Function End
-
+        /// <summary>
+        /// ///////////////////////////////////////////////////////////////////////////
+        /// </summary>
         // A Method For Doctors
         public static void doctor()
         {
@@ -55,7 +57,9 @@ namespace Hospital
 
 
         } //Doctor Method End
-
+        /// <summary>
+        /// ////////////////////////////////////////////////////////////////////////
+        /// </summary>
         // A Method For Patients
         public static void patient()
         {
@@ -87,7 +91,9 @@ namespace Hospital
             }
         } //Patient Method End
     }
-
+    /// <summary>
+    /// ////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     //The Hospital Details
     abstract class hospital
     {
@@ -102,19 +108,25 @@ namespace Hospital
         {
             
         }
-    }
-
+    } //Hospital Class End
+    /// <summary>
+    /// ////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     //departments basics
     class department : hospital
     {
-        string name;
-        
-        public department(string n)
+        public department()
         {
-            
-        }
-    }
+            string[] dep = new string[d_num];
+            dep[0] = "Bones";
+            dep[1] = "Burns";
+            dep[2] = "Kids";
 
+        }
+    } //Department Class End
+    /// <summary>
+    /// ////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     //informations about doctors
     class doctor : hospital
     {
@@ -123,8 +135,10 @@ namespace Hospital
         {
             
         }
-    }
-
+    } //Doctor Class End
+    /// <summary>
+    /// ///////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     //rooms
     class room : hospital
     {
@@ -135,5 +149,6 @@ namespace Hospital
         {
             
         }
-    }
+    } //Rooms Class End
+    /////////////////////////////////////////////////////////////////////////////////////////////
 }
