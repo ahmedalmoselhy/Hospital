@@ -8,7 +8,7 @@ namespace Hospital
         {
             //Welcome Screen
             Console.WriteLine("**************************************");
-            Console.WriteLine("********* {0} Hospital **********", hospital.h);
+            Console.WriteLine("********* {0} Hospital **********", hospital.hname);
             Console.WriteLine("Welcome To The Hospital\n*******************\nWe Hope You Get Well Soon\n*******************");
             Console.WriteLine("Please Tell Us Are You\n1) A Doctor\n2) A Patient");
             Console.WriteLine("*******************");
@@ -26,7 +26,7 @@ namespace Hospital
             }
             else if(c1 == "2")
             {
-
+                patient();
             }
             else
             {
@@ -35,7 +35,7 @@ namespace Hospital
                 goto selection1;
 
             }
-        } //Main Function End -in case of being uncertain
+        } //Main Function End
 
         // A Method For Doctors
         public static void doctor()
@@ -54,59 +54,85 @@ namespace Hospital
             }
 
 
-        }
+        } //Doctor Method End
+
+        // A Method For Patients
+        public static void patient()
+        {
+            Console.WriteLine("*********************************************************");
+            Console.WriteLine("Welcome, We Hope You Get Well Soon\nPlease Tell Us Are You New Or You're Staying Before");
+        selecton3:
+            Console.Write("1) New\n2)Staying Before");
+            string c3 = Console.ReadLine();
+            Boolean cs = false;
+            if(c3 == "1")
+            {
+
+            }
+            else if(c3 == "2")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("*******************");
+                Console.WriteLine("Wrong Choice, Try Again!\n*******************");
+                goto selecton3;
+            }
+
+            if(cs == false)
+            {
+                Console.WriteLine("*******************\nSelect Again!\n*******************");
+                goto selecton3;
+            }
+        } //Patient Method End
     }
 
     //The Hospital Details
-    class hospital
+    abstract class hospital
     {
-        public string hname;
-        public static string h = "HOPE";
-        public hospital(string n)
+        
+        public static string hname = "HOPE";
+        public int r_num = 20;
+        public int d_num = 7;
+        public int mp_num = 20;
+        public int p_num;
+        public hospital()
         {
-            this.hname = n;
+            
         }
     }
 
     //departments basics
-    class department
+    class department : hospital
     {
         string name;
-        int d_num;
-        int r_num;
-        int p_num;
-        public department(string n, int d, int r, int p)
+        
+        public department(string n)
         {
-            this.name = n;
-            this.d_num = d;
-            this.r_num = r;
-            this.p_num = p;
+            
         }
     }
 
     //informations about doctors
-    class doctor
+    class doctor : hospital
     {
-        string name;
-        int age;
-        string spec;
-        public doctor(string n, string s, int a)
+        
+        public doctor()
         {
-            this.name = n;
-            this.spec = s;
-            this.age = a;
+            
         }
     }
 
     //rooms
-    class room
+    class room : hospital
     {
-        Boolean full;
-        string p_name;
+        Boolean full; // in case room is full no patient allowed
+        
 
         public room(string p)
         {
-            this.p_name = p;
+            
         }
     }
 }
