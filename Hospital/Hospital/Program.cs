@@ -62,7 +62,7 @@ namespace Hospital
             Console.WriteLine("*********************************************************");
             Console.WriteLine("Welcome, We Hope You Get Well Soon\nPlease Tell Us Are You New Or You're Staying Before");
         selecton3:
-            Console.Write("1) New\n2)Staying Before");
+            Console.Write("1) New\n2) Staying Before\n*** : ");
             string c3 = Console.ReadLine();
             Boolean cs = false;
             if(c3 == "1")
@@ -94,7 +94,8 @@ namespace Hospital
         
         public static string hname = "HOPE";
         public int r_num = 20;
-        public int d_num = 7;
+        public int d_num = 3;
+        public int doc_num = 9;
         public int mp_num = 20;
         public int p_num;
         public hospital()
