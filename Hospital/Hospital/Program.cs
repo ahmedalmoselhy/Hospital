@@ -51,16 +51,22 @@ namespace Hospital
         public static void doctor_m()
         {
             Console.WriteLine("*********************************************************");
-            Console.WriteLine("Welcome Doctor, Please Enter Your ID Number Below");
-            Console.WriteLine("*******************");
-            selection2:
-            Console.Write("ID Number : ");
-            string id = Console.ReadLine();
-            Boolean ids = false; //Add the check id function
-            if (ids == false)
+        selection4:
+            Console.Write("Are You A \n1) New Doctor OR 2) Registered Doctor\n*** : ");
+
+            string c6 = Console.ReadLine();
+            if(c6 == "1")
             {
-                Console.WriteLine("*******************\nWrong ID Number, Try Again!\n*******************");
-                goto selection2;
+
+            }
+            else if(c6 == "2")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Wrong Choice, Please Try Again!\n*******************");
+                goto selection4;
             }
 
 
@@ -140,6 +146,11 @@ namespace Hospital
         public doctor()
         {
 
+        }
+
+        public static void doctor_search()
+        {
+            
         }
     } //Doctor Class End
     /// <summary>
