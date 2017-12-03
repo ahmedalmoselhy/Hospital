@@ -9,7 +9,6 @@ namespace Hospital
         //Our Objects
         public doctor doc = new doctor();
         public department dep = new department();
-        public room rom = new room();
         public patient p = new patient();
 
 
@@ -86,9 +85,7 @@ namespace Hospital
             else if (c3 == "2")
             {
                 Console.WriteLine("*******************");
-                Console.Write("Kindly Enter Your Full Name\n*** : ");
-                string patient_name = Console.ReadLine();
-                patient.read_patient(patient_name);
+                patient.read_patient();
             }
             else
             {
@@ -128,12 +125,9 @@ namespace Hospital
     //departments basics
     class department : hospital
     {
-
         public department()
         {
             
-            
-
         }
     } //Department Class End
     /// <summary>
@@ -151,18 +145,6 @@ namespace Hospital
     /// <summary>
     /// ///////////////////////////////////////////////////////////////////////////////////////
     /// </summary>
-    //rooms
-    class room : hospital
-    {
-
-        public room()
-        {
-
-        }
-    } //Rooms Class End
-    /// <summary>
-    /// //////////////////////////////////////////////////////////////////////////////////////
-    /// </summary>
     //Class for Patients
     class patient : hospital
     {
@@ -170,8 +152,24 @@ namespace Hospital
         {
 
         }
-        public static void read_patient(string p_name) // To look for a patient
+        public static void read_patient() // To look for a patient
         {
+        patientname:
+            Console.Write("Kindly Enter Your Full Name\n*** : ");
+            string patient_name = Console.ReadLine();
+            // hna ht3ml search 3la file mwgood b 2sm el patient ely d5l dh, lw mwgood tmam, lw msh mwgood try again
+            if () //hna el search 3la elfile fi directory Patients
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("*******************");
+                Console.WriteLine("There's No Patient With This Name In Our Database! Please Try again\n*******************");
+                goto patientname;
+            }
+
+
 
         }
         public static void sign_patient() // To register a new patient
@@ -219,6 +217,11 @@ namespace Hospital
             {
                 depart = dep3;
             }
+            ///////////////
+            //now we have all data about the patient!
+
+            // hna ht3ml file b 2sm el patient w td5l feh eldata ely fo2 di (name, age, blood type, department)
+
         }
     } //Patient Class End
 }
