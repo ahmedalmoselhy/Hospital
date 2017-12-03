@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 
 namespace Hospital
 {
     
     class Program
     {
+
         
         //Our Objects
         public doctor doc = new doctor();
@@ -14,6 +16,14 @@ namespace Hospital
 
         static void Main(string[] args)
         {
+            if (!Directory.Exists(@"Patients"))
+            {
+                Directory.CreateDirectory(@"Patients");
+            }
+            if (!Directory.Exists(@"Doctors"))
+            {
+                Directory.CreateDirectory(@"Doctors");
+            }
             //Welcome Screen
             Console.WriteLine("**************************************");
             Console.WriteLine("********* {0} Hospital **********", hospital.hname);
@@ -41,7 +51,6 @@ namespace Hospital
                 Console.WriteLine("Wrong Choice, Please Try Again!");
                 Console.WriteLine("*******************");
                 goto selection1;
-
             }
         } //Main Function End
         /// <summary>
@@ -68,8 +77,6 @@ namespace Hospital
                 Console.WriteLine("Wrong Choice, Please Try Again!\n*******************");
                 goto selection4;
             }
-
-
         } //Doctor Method End
         /// <summary>
         /// ////////////////////////////////////////////////////////////////////////
@@ -99,8 +106,6 @@ namespace Hospital
                 Console.WriteLine("Wrong Choice, Try Again!\n*******************");
                 goto selecton3;
             }
-
-            
         } //Patient Method End
     }
     /// <summary>
@@ -109,10 +114,8 @@ namespace Hospital
     //The Hospital Details
     abstract class hospital
     {
-
         public static string hname = "HOPE";
         public int r_num = 20;
-        
         public static int doc_num = 9;
         public static int mp_num = 20;
         public static int p_num;
@@ -142,7 +145,6 @@ namespace Hospital
     //informations about doctors
     class doctor : hospital
     {
-
         public doctor()
         {
 
@@ -168,20 +170,20 @@ namespace Hospital
         patientname:
             Console.Write("Kindly Enter Your Full Name\n*** : ");
             string patient_name = Console.ReadLine();
-            // hna ht3ml search 3la file mwgood b 2sm el patient ely d5l dh, lw mwgood tmam, lw msh mwgood try again
-            if () //hna el search 3la elfile fi directory Patients
-            {
 
+            string path = "Patients/" + patient_name + ".txt";
+            // hna ht3ml search 3la file mwgood b 2sm el patient ely d5l dh, lw mwgood tmam, lw msh mwgood try again
+            if (File.Exists(path)) //hna el search 3la elfile fi directory Patients
+            {
+                string read_file = File.ReadAllText(path);
+                Console.WriteLine(read_file);
             }
             else
             {
                 Console.WriteLine("*******************");
-                Console.WriteLine("There's No Patient With This Name In Our Database! Please Try again\n*******************");
+                Console.WriteLine("There's No Patient With This Name In Our Database! Please Try again!\n*******************");
                 goto patientname;
             }
-
-
-
         }
         public static void sign_patient() // To register a new patient
         {
@@ -231,8 +233,12 @@ namespace Hospital
             ///////////////
             //now we have all data about the patient!
 
-            // hna ht3ml file b 2sm el patient w td5l feh eldata ely fo2 di (name, age, blood type, department)
+            string path = @"Patients/" + patient_name + ".txt";
+            File.Create(path);
 
+
+            //Add The Data To The File (Name, Age, Blood Type, Gender, Department)
+            
         }
     } //Patient Class End
 }
