@@ -16,6 +16,7 @@ namespace Hospital
 
         static void Main(string[] args)
         {
+
             if (!Directory.Exists(@"Patients"))
             {
                 Directory.CreateDirectory(@"Patients");
@@ -24,6 +25,7 @@ namespace Hospital
             {
                 Directory.CreateDirectory(@"Doctors");
             }
+
             //Welcome Screen
             Console.WriteLine("**************************************");
             Console.WriteLine("********* {0} Hospital **********", hospital.hname);
@@ -35,7 +37,6 @@ namespace Hospital
             Console.Write("Enter Your Selection\n1) Doctor\n2) Patient\n*** : ");
             string c1 = Console.ReadLine();
             Console.WriteLine("*******************");
-            Console.WriteLine("Processing...");
 
             //Starting the first thing which is going through what we would do as a doctor or a patient
             if (c1 == "1")
@@ -52,6 +53,9 @@ namespace Hospital
                 Console.WriteLine("*******************");
                 goto selection1;
             }
+
+            goto selection1;
+
         } //Main Function End
         /// <summary>
         /// ///////////////////////////////////////////////////////////////////////////
@@ -59,24 +63,27 @@ namespace Hospital
         // A Method For Doctors
         public static void doctor_m()
         {
+
             Console.WriteLine("*********************************************************");
         selection4:
             Console.Write("Are You A \n1) New Doctor OR 2) Registered Doctor\n*** : ");
 
             string c6 = Console.ReadLine();
+
             if(c6 == "1")
             {
-
+                doctor.doctor_add();
             }
             else if(c6 == "2")
             {
-
+                doctor.doctor_search();
             }
             else
             {
                 Console.WriteLine("Wrong Choice, Please Try Again!\n*******************");
                 goto selection4;
             }
+
         } //Doctor Method End
         /// <summary>
         /// ////////////////////////////////////////////////////////////////////////
@@ -84,10 +91,12 @@ namespace Hospital
         // A Method For Patients
         public static void patient_m()
         {
+
             Console.WriteLine("*********************************************************");
             Console.WriteLine("Welcome, We Hope You Get Well Soon\nPlease Tell Us Are You New Or You're Staying Before");
             selecton3:
             Console.Write("1) New\n2) Staying Before\n*** : ");
+
             string c3 = Console.ReadLine();
             
             if (c3 == "1")
@@ -106,6 +115,7 @@ namespace Hospital
                 Console.WriteLine("Wrong Choice, Try Again!\n*******************");
                 goto selecton3;
             }
+
         } //Patient Method End
     }
     /// <summary>
@@ -114,11 +124,9 @@ namespace Hospital
     //The Hospital Details
     abstract class hospital
     {
+
         public static string hname = "HOPE";
-        public int r_num = 20;
-        public static int doc_num = 9;
-        public static int mp_num = 20;
-        public static int p_num;
+
         public static string dep1 = "Bones";
         public static string dep2 = "Burns";
         public static string dep3 = "Kids";
@@ -152,7 +160,27 @@ namespace Hospital
 
         public static void doctor_search()
         {
-            
+            Console.WriteLine("*******************");
+            doctorid:
+            Console.Write("Welcome Doctor, Please Enter Your ID Number (4 Digits)\n*** : ");
+            string id = Console.ReadLine();
+            string path = @"Doctors" + id + ".txt";
+
+            if (File.Exists(path))
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("*******************");
+                Console.WriteLine("Wrong ID Number, Please Try Again");
+                goto doctorid;
+            }
+ 
+        }
+        public static void doctor_add()
+        {
+
         }
     } //Doctor Class End
     /// <summary>
@@ -171,7 +199,7 @@ namespace Hospital
             Console.Write("Kindly Enter Your Full Name\n*** : ");
             string patient_name = Console.ReadLine();
 
-            string path = "Patients/" + patient_name + ".txt";
+            string path = @"Patients/" + patient_name + ".txt";
             // hna ht3ml search 3la file mwgood b 2sm el patient ely d5l dh, lw mwgood tmam, lw msh mwgood try again
             if (File.Exists(path)) //hna el search 3la elfile fi directory Patients
             {
