@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace Hospital
 {
@@ -204,7 +205,11 @@ namespace Hospital
             if (File.Exists(path)) //hna el search 3la elfile fi directory Patients
             {
                 string read_file = File.ReadAllText(path);
+                Console.WriteLine("*******************");
+                Console.WriteLine("*******************");
                 Console.WriteLine(read_file);
+                Console.WriteLine("*******************");
+                Console.WriteLine("*******************");
             }
             else
             {
@@ -223,7 +228,7 @@ namespace Hospital
             string blood_type = Console.ReadLine();
             /////////////////////////
             Console.Write("Please Tell Us Your Age\n*** : ");
-            int age = int.Parse(Console.ReadLine());
+            string age = Console.ReadLine();
             //////////////////////////
             Console.Write("You're *** 1) Male *** 2) Female\n*** : ");
             string c4 = Console.ReadLine();
@@ -240,7 +245,7 @@ namespace Hospital
                 gender = "female";
             }
             ///////////////////////////
-            if(age > 14)
+            if(int.Parse(age) > 14)
             {
                 Console.Write("What's Your Case?\n1) Broken Bones ***  2) Burn\n*** : ");
                 string c5 = Console.ReadLine();
@@ -262,11 +267,36 @@ namespace Hospital
             //now we have all data about the patient!
 
             string path = @"Patients/" + patient_name + ".txt";
-            File.Create(path);
-
-
-            //Add The Data To The File (Name, Age, Blood Type, Gender, Department)
             
+
+
+            patient_name = "Patient Name : " + patient_name;
+            age = "Age : " + age;
+            blood_type = "Blood Type : " + blood_type;
+            gender = "Gender : " + gender;
+            depart = "Department : " + depart;
+
+            WriteFile(path, patient_name);
+            WriteFile(path, age);
+            WriteFile(path, blood_type);
+            WriteFile(path, gender);
+            WriteFile(path, depart);
+            Console.WriteLine("*******************");
+            Console.WriteLine("*******************");
+            Console.WriteLine("*******************");
+            //Add The Data To The File (Name, Age, Blood Type, Gender, Department)
+
+        }
+
+        static void WriteFile(string path, string data)
+        {
+            StreamWriter writedata = new StreamWriter(path, true);
+            writedata.WriteLine(data);
+            writedata.Close();
+            
+
         }
     } //Patient Class End
+
+    
 }
