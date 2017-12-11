@@ -11,7 +11,6 @@ namespace Hospital
         
         //Our Objects
         public doctor doc = new doctor();
-        public department dep = new department();
         public patient p = new patient();
 
 
@@ -140,17 +139,6 @@ namespace Hospital
     /// <summary>
     /// ////////////////////////////////////////////////////////////////////////////////////
     /// </summary>
-    //departments basics
-    class department : hospital
-    {
-        public department()
-        {
-            
-        }
-    } //Department Class End
-    /// <summary>
-    /// ////////////////////////////////////////////////////////////////////////////////////
-    /// </summary>
     //informations about doctors
     class doctor : hospital
     {
@@ -163,24 +151,83 @@ namespace Hospital
         {
             Console.WriteLine("*******************");
             doctorid:
-            Console.Write("Welcome Doctor, Please Enter Your ID Number (4 Digits)\n*** : ");
-            string id = Console.ReadLine();
-            string path = @"Doctors" + id + ".txt";
+            Console.Write("Welcome Doctor, Please Enter Your Name \n*** : ");
+            string d_name = Console.ReadLine();
+            string path = @"Doctors" + d_name + ".txt";
 
             if (File.Exists(path))
             {
+                Console.WriteLine("*******************");
+                
+                Console.WriteLine("Welcome Dr. {0}, What Do You Want To Do?", d_name);
 
+                Console.Write("1) View My Data\n2) Update Patient Case\n 3) Release A Patient From The Hospital\n*** : ");
+                string dc = Console.ReadLine();
+                if(dc == "1")
+                {
+                    string read_file = File.ReadAllText(path);
+                    Console.WriteLine("*******************");
+                    Console.WriteLine("*******************");
+                    Console.WriteLine(read_file);
+                    Console.WriteLine("*******************");
+                    Console.WriteLine("*******************");
+                }
+                else if(dc == "2")
+                {
+                    p:
+                    Console.Write("Enter The Patient's Name : ");
+                    string p_name_d = Console.ReadLine();
+                    string p_path = @"Patients" + p_name_d + ".txt";
+                    if (File.Exists(p_path))
+                    {
+                        Console.WriteLine("What Do You Want To Add?");
+                        string text = Console.ReadLine();
+                        WriteFile(p_path, text);
+                    }
+                    else
+                    {
+                        Console.WriteLine("TRY AGAIN");
+                        goto p;
+                    }
+
+                }
+                else if(dc == "3")
+                {
+                    px:
+                    Console.Write("Enter The Patient's Name : ");
+                    string p_name_d = Console.ReadLine();
+                    string p_path = @"Patients" + p_name_d + ".txt";
+                    if (File.Exists(p_path))
+                    {
+                        File.Delete(p_path);
+                        Console.WriteLine("Patient {0} Released, File Deleted", p_name_d);
+                    }
+                    else
+                    {
+                        Console.WriteLine("TRY AGAIN");
+                        goto px;
+                    }
+                }
             }
             else
             {
                 Console.WriteLine("*******************");
-                Console.WriteLine("Wrong ID Number, Please Try Again");
+                Console.WriteLine("Wrong Name, Please Try Again!");
                 goto doctorid;
             }
  
         }
         public static void doctor_add()
         {
+
+        }
+
+        static void WriteFile(string path, string data)
+        {
+            StreamWriter writedata = new StreamWriter(path, true);
+            writedata.WriteLine(data);
+            writedata.Close();
+
 
         }
     } //Doctor Class End
@@ -201,8 +248,8 @@ namespace Hospital
             string patient_name = Console.ReadLine();
 
             string path = @"Patients/" + patient_name + ".txt";
-            // hna ht3ml search 3la file mwgood b 2sm el patient ely d5l dh, lw mwgood tmam, lw msh mwgood try again
-            if (File.Exists(path)) //hna el search 3la elfile fi directory Patients
+            
+            if (File.Exists(path)) 
             {
                 string read_file = File.ReadAllText(path);
                 Console.WriteLine("*******************");
