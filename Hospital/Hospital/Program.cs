@@ -153,7 +153,7 @@ namespace Hospital
             doctorid:
             Console.Write("Welcome Doctor, Please Enter Your Name \n*** : ");
             string d_name = Console.ReadLine();
-            string path = @"Doctors" + d_name + ".txt";
+            string path = @"Doctors/" + d_name + ".txt";
 
             if (File.Exists(path))
             {
@@ -161,7 +161,7 @@ namespace Hospital
                 
                 Console.WriteLine("Welcome Dr. {0}, What Do You Want To Do?", d_name);
 
-                Console.Write("1) View My Data\n2) Update Patient Case\n 3) Release A Patient From The Hospital\n*** : ");
+                Console.Write("1) View My Data\n2) Update Patient Case\n3) Release A Patient From The Hospital\n*** : ");
                 string dc = Console.ReadLine();
                 if(dc == "1")
                 {
@@ -177,11 +177,12 @@ namespace Hospital
                     p:
                     Console.Write("Enter The Patient's Name : ");
                     string p_name_d = Console.ReadLine();
-                    string p_path = @"Patients" + p_name_d + ".txt";
+                    string p_path = @"Patients/" + p_name_d + ".txt";
                     if (File.Exists(p_path))
                     {
                         Console.WriteLine("What Do You Want To Add?");
                         string text = Console.ReadLine();
+                        text = text + "\n ADDED BY DR : " + d_name + "\n******\n";
                         WriteFile(p_path, text);
                     }
                     else
@@ -196,7 +197,7 @@ namespace Hospital
                     px:
                     Console.Write("Enter The Patient's Name : ");
                     string p_name_d = Console.ReadLine();
-                    string p_path = @"Patients" + p_name_d + ".txt";
+                    string p_path = @"Patients/" + p_name_d + ".txt";
                     if (File.Exists(p_path))
                     {
                         File.Delete(p_path);
@@ -219,7 +220,56 @@ namespace Hospital
         }
         public static void doctor_add()
         {
+            Console.WriteLine("*******************");
+            Console.WriteLine("*******************");
+            Console.Write("Please Enter Your Name : ");
+            string d_name = Console.ReadLine();
+            Console.Write("Please Enter Your Age : ");
+            string d_age = Console.ReadLine();
+            idd:
+            Console.Write("Enter Your ID (4 Digits) : ");
+            string id = Console.ReadLine();
+            if(id.Length != 4)
+            {
+                Console.WriteLine("Wrong ID, Try Again!");
+                goto idd;
+            }
+            Console.Write("Enter Your Salary : ");
+            string sal = Console.ReadLine();
+            Console.Write("Enter Your Specialization\n1) Bones\n2) Burns\n3) Kids\n*** : ");
+            string c = Console.ReadLine();
+            string spec = "";
+            if(c == "1")
+            {
+                spec = "Bones";
+            }
+            else if(c == "2")
+            {
+                spec = "Burns";
+            }
+            else if(c == "3")
+            {
+                spec = "Kids";
+            }
+            ///////
+            string path = @"Doctors/" + d_name + ".txt";
+            
 
+            string name = "Doctor Name : " + d_name;
+            string d_id = "Doctor ID : " + id;
+            string age = "Age : " + d_age;
+            string special = "Specialization : " + spec;
+            string salary = "Salary : " + sal;
+
+            ///////
+            WriteFile(path, name);
+            WriteFile(path, d_id);
+            WriteFile(path, age);
+            WriteFile(path, special);
+            WriteFile(path, salary);
+            Console.WriteLine("*******************");
+            Console.WriteLine("*******************");
+            Console.WriteLine("*******************");
         }
 
         static void WriteFile(string path, string data)
@@ -346,4 +396,5 @@ namespace Hospital
     } //Patient Class End
 
     
+    //AAA AMM
 }
