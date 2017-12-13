@@ -7,7 +7,8 @@ namespace Hospital
     
     class Program
     {
-
+        public static string p_num;
+        public static string d_num;
         
         //Our Objects
         public doctor doc = new doctor();
@@ -25,6 +26,8 @@ namespace Hospital
             {
                 Directory.CreateDirectory(@"Doctors");
             }
+            
+
 
             //Welcome Screen
             Console.WriteLine("**************************************");
@@ -202,6 +205,7 @@ namespace Hospital
                     {
                         File.Delete(p_path);
                         Console.WriteLine("Patient {0} Released, File Deleted", p_name_d);
+                        
                     }
                     else
                     {
