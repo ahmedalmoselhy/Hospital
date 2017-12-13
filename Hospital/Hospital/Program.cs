@@ -7,8 +7,7 @@ namespace Hospital
     
     class Program
     {
-        public static string p_num;
-        public static string d_num;
+        
         
         //Our Objects
         public doctor doc = new doctor();
