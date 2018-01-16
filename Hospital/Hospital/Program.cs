@@ -394,10 +394,7 @@ namespace Hospital
             writedata.WriteLine(data);
             writedata.Close();
             
-
         }
     } //Patient Class End
-
-    
     //AAA AMM
 }
